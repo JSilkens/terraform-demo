@@ -45,7 +45,7 @@ resource "random_shuffle" "random_numbers" {
 }
 
 output "mad_libs" {
-  value = templatefile("${path.module}/template/alice.txt",
+  value = templatefile("${path.module}/alice.txt",
   {
     nouns = random_shuffle.random_nouns.result
     adjectives = random_shuffle.random_adjectives.result
