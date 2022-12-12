@@ -1,7 +1,7 @@
 resource "randon_password" "password" { # Uses the random provider to create a 16-character password
   length = 16
   special = true
-  override_special "_%@/'\""
+  #verride_special "_%@/'\""
 }
 
 resource "aws_db_instance" "database" {
@@ -14,7 +14,7 @@ resource "aws_db_instance" "database" {
   username = "admin"
   password = randon_password.password.result
 
-  db_subnet_group_name = var.vpc.database_subnet_group
-  vpc_security_group_ids = [var.sg.db]
+  db_subnet_group_name = var.vpc.database_subnet_group # These values came from the networking module
+  vpc_security_group_ids = [var.sg.db] # These values came from the networking module
   skip_final_snapshot = true
 }
